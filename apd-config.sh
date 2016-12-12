@@ -1,12 +1,12 @@
 cp /etc/hostapd/hostapd.conf /etc/hostapd/hostapd.conf.orig
 cp /etc/network/interfaces   /etc/network/interfaces.orig
-cp /etc/dhcp/dhcp.conf       /etc/dhcp/dhcp.conf.orig
+cp /etc/dhcp/dhcpd.conf      /etc/dhcp/dhcpd.conf.orig
 cp /etc/default/hostapd      /etc/default/hostapd.orig
 
 
 echo -n "" > /etc/hostapd/hostapd.conf
 echo -n "" > /etc/network/interfaces
-echo -n "" > /etc/dhcp/dhcp.conf
+echo -n "" > /etc/dhcp/dhcpd.conf
 echo -n "" > /etc/default/hostapd
 
 
@@ -41,20 +41,20 @@ echo "iface wlan1 inet manual"                             >> /etc/network/inter
 echo "    wpa-conf /etc/wpa_supplicant/wpa_supplicant.con" >> /etc/network/interfaces
 
 
-echo "ddns-update-style none;"                                      >> /etc/dhcp/dhcp.conf
-echo "option domain-name \"example.org\";"                          >> /etc/dhcp/dhcp.conf
-echo "option domain-name-servers ns1.example.org, ns2.example.org;" >> /etc/dhcp/dhcp.conf
-echo "default-lease-time 600;"                                      >> /etc/dhcp/dhcp.conf
-echo "max-lease-time 7200;"                                         >> /etc/dhcp/dhcp.conf
-echo "authoritative;"                                               >> /etc/dhcp/dhcp.conf
-echo "log-facility local7;"                                         >> /etc/dhcp/dhcp.conf
-echo ""                                                             >> /etc/dhcp/dhcp.conf
-echo "subnet 10.10.0.0 netmask 255.255.255.0 {"                     >> /etc/dhcp/dhcp.conf
-echo "    range 10.10.0.25 10.10.0.50;"                             >> /etc/dhcp/dhcp.conf
-echo "    option domain-name-servers 8.8.8.8, 8.8.4.4;"             >> /etc/dhcp/dhcp.conf
-echo "    option routers 10.10.0.1;"                                >> /etc/dhcp/dhcp.conf
-echo "    interface wlan0;"                                         >> /etc/dhcp/dhcp.conf
-echo "}"                                                            >> /etc/dhcp/dhcp.conf
+echo "ddns-update-style none;"                                      >> /etc/dhcp/dhcpd.conf
+echo "option domain-name \"example.org\";"                          >> /etc/dhcp/dhcpd.conf
+echo "option domain-name-servers ns1.example.org, ns2.example.org;" >> /etc/dhcp/dhcpd.conf
+echo "default-lease-time 600;"                                      >> /etc/dhcp/dhcpd.conf
+echo "max-lease-time 7200;"                                         >> /etc/dhcp/dhcpd.conf
+echo "authoritative;"                                               >> /etc/dhcp/dhcpd.conf
+echo "log-facility local7;"                                         >> /etc/dhcp/dhcpd.conf
+echo ""                                                             >> /etc/dhcp/dhcpd.conf
+echo "subnet 10.10.0.0 netmask 255.255.255.0 {"                     >> /etc/dhcp/dhcpd.conf
+echo "    range 10.10.0.25 10.10.0.50;"                             >> /etc/dhcp/dhcpd.conf
+echo "    option domain-name-servers 8.8.8.8, 8.8.4.4;"             >> /etc/dhcp/dhcpd.conf
+echo "    option routers 10.10.0.1;"                                >> /etc/dhcp/dhcpd.conf
+echo "    interface wlan0;"                                         >> /etc/dhcp/dhcpd.conf
+echo "}"                                                            >> /etc/dhcp/dhcpd.conf
 
 
 echo "DAEMON_CONF=\"/etc/hostapd/hostapd.conf\""   >> /etc/default/hostapd
